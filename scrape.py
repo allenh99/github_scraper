@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas
 
 URL = "https://github.com/SimplifyJobs/Summer2025-Internships"
 page = requests.get(URL)
@@ -28,4 +29,9 @@ for row in table.find('tbody').find_all('tr'):
         'Date Posted': date_posted
     })
 
-print(data[0])
+
+f = open("out.txt","w")
+
+for i in data:
+    print(i)
+
