@@ -31,10 +31,25 @@ for row in table.find('tbody').find_all('tr'):
     })
 
 
-f = open("out.txt","w")
-
+# f = open("out.txt","w")
+#fields = ["Company","Role","Location","Application","Date Posted"]
+fields = ["Company","Date Posted","Applied","Location","Application"]
+csv_data = []
 for i in data:
     if len(i["Application/Links"]) > 0:
-        d = [i["Company"],i["Role"],i["Location"],i["Application/Links"][0]["href"],i["Date Posted"]]
-        print(d)
+        d = [i["Company"],i["Date Posted"],"",i["Location"]+" "+i["Role"],i["Application/Links"][0]["href"]]
+        csv_data.append(d)
+        #print(d)
 
+filename = "job_listings.csv"
+
+# writing to csv file
+with open(filename, 'w') as csvfile:
+    # creating a csv writer object
+    csvwriter = csv.writer(csvfile)
+
+    # writing the fields
+    csvwriter.writerow(fields)
+
+    # writing the data rows
+    csvwriter.writerows(csv_data)
