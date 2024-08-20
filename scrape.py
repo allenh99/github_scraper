@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas
+import csv
 
 URL = "https://github.com/SimplifyJobs/Summer2025-Internships"
 page = requests.get(URL)
@@ -33,5 +34,7 @@ for row in table.find('tbody').find_all('tr'):
 f = open("out.txt","w")
 
 for i in data:
-    print(i)
+    if len(i["Application/Links"]) > 0:
+        d = [i["Company"],i["Role"],i["Location"],i["Application/Links"][0]["href"],i["Date Posted"]]
+        print(d)
 
