@@ -33,11 +33,11 @@ for row in table.find('tbody').find_all('tr'):
 
 # f = open("out.txt","w")
 #fields = ["Company","Role","Location","Application","Date Posted"]
-fields = ["Company","Date Posted","Applied","Location","Application"]
+fields = ["Company","Date Posted","Referal","Applied","Location","Application"]
 csv_data = []
 for i in data:
     if len(i["Application/Links"]) > 0:
-        d = [i["Company"],i["Date Posted"],"",i["Location"]+" "+i["Role"],i["Application/Links"][0]["href"]]
+        d = [i["Company"],i["Date Posted"],"","",i["Location"]+" "+i["Role"],i["Application/Links"][0]["href"]]
         csv_data.append(d)
         #print(d)
 
