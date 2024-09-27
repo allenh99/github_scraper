@@ -32,7 +32,7 @@ for row in table.find('tbody').find_all('tr'):
 
 
 # f = open("out.txt","w")
-#fields = ["Company","Role","Location","Application","Date Posted"]
+fields = ["Company","Role","Location","Application","Date Posted"]
 fields = ["Company","Date Posted","Referal","Applied","Location","Application"]
 csv_data = []
 for i in data:
