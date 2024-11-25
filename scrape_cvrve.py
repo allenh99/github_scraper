@@ -29,5 +29,19 @@ for row in table.find('tbody').find_all('tr'):
         'Application/Links': application_links,
         'Date Posted': date_posted
     })
-print(data)
-#print(table)
+
+fields = ["Company","Role","Location","Application","Date Posted"]
+fields = ["Company","Date Posted","Referal","Applied","Location","Application"]
+csv_data = []
+for i in data:
+    if len(i["Application/Links"]) > 0:
+        d = [i["Company"],i["Date Posted"],"","",i["Location"]+" "+i["Role"],i["Application/Links"][0]["href"]]
+        csv_data.append(d)
+        #print(d)
+
+filename = "job_listings_cvrve.csv"
+
+with open(filename, 'w') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(fields)
+    csvwriter.writerows(csv_data)
